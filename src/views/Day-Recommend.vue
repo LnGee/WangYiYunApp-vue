@@ -1,6 +1,15 @@
 <template>
   <!-- 每日推荐 -->
   <div class="recd">
+<<<<<<< Updated upstream
+=======
+    <van-nav-bar
+      title="今日推荐"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
+>>>>>>> Stashed changes
     <van-card v-for="item in state.music" :key="item.al.id" @click="play(item.id,item.al.picUrl)">
       <template #thumb>
         <img :src="item.al.picUrl" alt style="width:80px;height:80px;" />
@@ -12,6 +21,7 @@
       <!-- <template #tags></template> -->
       <!-- <template #tags></template> -->
     </van-card>
+<<<<<<< Updated upstream
     <div style="height:100px;width:100%;background-color:#fff;" class="position flex">
       <img :src="state.pic?state.pic:''" class="img" />
       <audio
@@ -22,16 +32,26 @@
         autoplay
       ></audio>
     </div>
+=======
+>>>>>>> Stashed changes
   </div>
 </template>
 
 <script>
 import { recommend, musicUrl } from "../api/banner";
 import { createApp, reactive } from "vue";
+<<<<<<< Updated upstream
 import { Card } from "vant";
 
 const app = createApp();
 app.use(Card);
+=======
+import { Card,NavBar } from "vant";
+import { mapMutations } from "vuex";
+
+const app = createApp();
+app.use(Card).use(NavBar);
+>>>>>>> Stashed changes
 export default {
   setup() {
     const state = reactive({
@@ -40,8 +60,16 @@ export default {
       pic: "",
       isPlay: false
     });
+<<<<<<< Updated upstream
     return {
       state
+=======
+   
+    const onClickLeft = () => history.back();
+     return {
+      state,
+      onClickLeft
+>>>>>>> Stashed changes
     };
   },
   created() {
@@ -50,6 +78,10 @@ export default {
     });
   },
   methods: {
+<<<<<<< Updated upstream
+=======
+    ...mapMutations('musicUrl',['setUrl','setPic']),
+>>>>>>> Stashed changes
     async getMusic() {
       await recommend().then(res => {
         const { dailySongs } = res.data;
@@ -58,11 +90,16 @@ export default {
     },
     play(id, pic) {
       musicUrl(id).then(res => {
+<<<<<<< Updated upstream
         this.state.url = res.data[0].url;
         this.state.pic = pic;
         // setTimeout(() => {
         //   this.handlePlayAudio();
         // }, 1000);
+=======
+        this.setUrl(res.data[0].url)
+        this.setPic(pic)
+>>>>>>> Stashed changes
       });
     }
     // handlePlayAudio() {
@@ -81,6 +118,7 @@ export default {
 .recd {
   position: relative;
 }
+<<<<<<< Updated upstream
 .position {
   position: fixed;
   bottom: 0;
@@ -95,4 +133,7 @@ export default {
   z-index: 100;
   background-color: #fff;
 }
+=======
+
+>>>>>>> Stashed changes
 </style>

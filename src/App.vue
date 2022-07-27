@@ -1,5 +1,6 @@
 <template>
   <div style="width:100%;">
+<<<<<<< Updated upstream
     <router-view />
     <tab-bar />
   </div>
@@ -10,6 +11,17 @@ export default {
   components: {
     TabBar
   }
+=======
+    <Home-Page></Home-Page>
+  </div>
+</template>
+<script>
+import HomePage from '@/components/home-page.vue'
+export default {
+  components:[
+    HomePage
+  ]
+>>>>>>> Stashed changes
 };
 </script>
 <style lang="less">

@@ -4,7 +4,11 @@
       <van-tabbar-item replace to="/" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item replace to="/about" icon="search">关注</van-tabbar-item>
       <van-tabbar-item replace to="/search" icon="search">云村</van-tabbar-item>
+<<<<<<< Updated upstream
       <van-tabbar-item replace to="/" icon="search">我的</van-tabbar-item>
+=======
+      <van-tabbar-item replace to="/aa" icon="search">我的</van-tabbar-item>
+>>>>>>> Stashed changes
     </van-tabbar>
   </div>
 </template>

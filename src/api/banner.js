@@ -35,4 +35,20 @@ export const search = (keywords) => {
     //   start
     // }
   })
+<<<<<<< Updated upstream
+=======
+}
+export const musicOrder=(limit)=>{
+  return request({
+    url:API.musicOrder+'?limit='+limit,
+    methods:'GET'
+  })
+}
+
+export const orderDetail=(id,limit)=>{
+  return request({
+    url:API.orderDetail+'?'+`id=${id}&limit=${limit}`,
+    methods:'GET'
+  })
+>>>>>>> Stashed changes
 }
