@@ -2,14 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-<<<<<<< Updated upstream
-    path: '/',
-    name: 'home',
-    component: () => import('../views/HomeView.vue')
-  },
-  {
-=======
->>>>>>> Stashed changes
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -27,8 +19,6 @@ const routes = [
     name: 'search',
     component: () => import('../views/To-Search.vue')
   },
-<<<<<<< Updated upstream
-=======
   {
     path: '/',
     name: 'homes',
@@ -44,7 +34,16 @@ const routes = [
     name: 'ranking',
     component: () => import('../views/rangking-list.vue')
   },
->>>>>>> Stashed changes
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/music-order.vue')
+  },
+  {
+    path: '/orderDetail',
+    name: 'order-detail',
+    component: () => import('../views/music-order-detail.vue')
+  },
 ]
 
 const router = createRouter({

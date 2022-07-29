@@ -1,22 +1,31 @@
-const musicUrl={
+const musicUrl = {
     namespaced: true, // 启动命名空间使用
-    state:{
-        url:null,
-        pic:null
+    state: {
+        url: null,
+        pic: null
     },
-    getters:{
+    getters: {
 
     },
-    mutations:{
-        setUrl(state,payload){
-            state.url=payload
+    mutations: {
+        setUrl(state, payload) {
+            state.url = payload
         },
-        setPic(state,payload){
-            state.pic=payload
+        setPic(state, payload) {
+            state.pic = payload
         }
     },
-    actions:{
-
+    actions: {
+        setUrl(context, payload) {
+            setTimeout(() => {
+                context.commit('setUrl', payload)
+            }, 500)
+        },
+        setPic(context, payload) {
+            setTimeout(() => {
+                context.commit('setPic', payload)
+            }, 500)
+        }
     }
 }
 export default musicUrl

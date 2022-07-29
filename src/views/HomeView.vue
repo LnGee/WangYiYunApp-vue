@@ -19,54 +19,46 @@
   </div>
 </template>
 
-<script>
+<script setup>
 // @ is an alias to /src
-import { createApp, reactive } from "vue";
+import { createApp, reactive,onMounted } from "vue";
 import { Swipe, SwipeItem, Grid, GridItem } from "vant";
 import { banner } from "../api/banner";
+import {useRouter} from 'vue-router'
 const app = createApp();
 app
   .use(Swipe)
   .use(SwipeItem)
   .use(Grid)
   .use(GridItem);
-export default {
-  name: "HomeView",
-  components: {},
-  setup() {
-    const state = reactive({
-      img: []
+  const state = reactive({
+    img: []
+  });
+  const nav = reactive({
+    grid: [
+      { icon: "good-job-o", text: "每日推荐", path: "/recd" },
+      { icon: "orders-o", text: "歌单", path: "/order" },
+      { icon: "bar-chart-o", text: "排行榜", path: "/ranking" },
+      { icon: "wap-home-o", text: "歌房", path: "/musichome" }
+    ]
+  });
+
+  const router=useRouter();
+  
+  onMounted(()=>{
+    getBanner()
+  });
+
+  const getBanner=()=> {
+    banner(2).then(res => {
+      const { state } = this;
+      state.img = res.banners;
     });
-    const nav = reactive({
-      grid: [
-        { icon: "good-job-o", text: "每日推荐", path: "/recd" },
-        { icon: "orders-o", text: "歌单", path: "/order" },
-        { icon: "bar-chart-o", text: "排行榜", path: "/ranking" },
-        { icon: "wap-home-o", text: "歌房", path: "/musichome" }
-      ]
-    });
-    return {
-      state,
-      nav
-    };
   },
-  created() {
-    this.$nextTick(() => {
-      this.getBanner();
-    });
-  },
-  methods: {
-    getBanner() {
-      banner(2).then(res => {
-        const { state } = this;
-        state.img = res.banners;
-      });
-    },
-    navgateto(path) {
-      this.$router.push(path);
-    }
-  }
-};
+  const navgateto=(path)=> {
+    router.push(path);
+  };
+
 </script>
 <style lang="stylus">
 .my-swipe .van-swipe-item {

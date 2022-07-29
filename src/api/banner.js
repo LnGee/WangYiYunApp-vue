@@ -35,20 +35,31 @@ export const search = (keywords) => {
     //   start
     // }
   })
-<<<<<<< Updated upstream
-=======
 }
-export const musicOrder=(limit)=>{
+export const musicOrder = (limit) => {
   return request({
-    url:API.musicOrder+'?limit='+limit,
-    methods:'GET'
+    url: API.musicOrder + '?limit=' + limit,
+    methods: 'GET'
   })
 }
 
-export const orderDetail=(id,limit)=>{
+export const orderDetail = (id, limit) => {
   return request({
-    url:API.orderDetail+'?'+`id=${id}&limit=${limit}`,
-    methods:'GET'
+    url: API.orderDetail + '?' + `id=${id}&limit=${limit}`,
+    methods: 'GET'
   })
->>>>>>> Stashed changes
+}
+
+export const orderList = () => {
+  return request({
+    url: API.orderList,
+    methods: 'GET'
+  })
+}
+
+export const musicOrderDetail = (id) => {
+  return request({
+    url: API.musicOrderDetail + `?id=${id}`,
+    methods: 'GET'
+  })
 }

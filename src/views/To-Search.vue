@@ -21,30 +21,29 @@
   </div>
 </template>
 
-<script>
-import { search } from "./../api/banner";
+<script setup>
+import { search, musicUrl } from "./../api/banner";
 import { createApp, reactive } from "vue";
 import { Search, Card } from "vant";
-
+import { useStore } from "vuex";
 const app = createApp();
 app.use(Search).use(Card);
-export default {
-  setup() {
-    const state = reactive({
-      keywords: "",
-      music: []
-    });
-    return {
-      state
-    };
-  },
-  methods: {
-    getSearch() {
-      search(this.state.keywords).then(res => {
-        this.state.music = res.result.songs;
-      });
-    }
-  }
+const state = reactive({
+  keywords: "",
+  music: []
+});
+const store = useStore();
+const getSearch = () => {
+  search(state.keywords).then(res => {
+    state.music = res.result.songs;
+  });
+};
+
+const play = (id, pic) => {
+  musicUrl(id).then(res => {
+    store.dispatch("musicUrl/setUrl", res.data[0].url);
+    store.dispatch("musicUrl/setPic", pic);
+  });
 };
 </script>
  
